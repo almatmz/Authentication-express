@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="authContainer">
+        <section>
+          <h2>Create Account</h2>
+          <form id="registerForm">
+            <input type="text" id="regName" placeholder="Full Name" required />
+            <input
+              type="email"
+              id="regEmail"
+              placeholder="Email Address"
+              required
+            />
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="regPass"
+                placeholder="Password"
+                required
+              />
+              <button
+                type="button"
+                class="toggle-password"
+                onclick="togglePassword('regPass')"
+              >
+                Show
+              </button>
+            </div>
+            <button type="submit" class="btn-primary">Register</button>
+          </form>
+        </section>
+
+        <div class="divider"></div>
+
+        <section>
+          <h2>Login</h2>
+          <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email" required />
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="loginPass"
+                placeholder="Password"
+                required
+              />
+              <button
+                type="button"
+                class="toggle-password"
+                onclick="togglePassword('loginPass')"
+              >
+                Show
+              </button>
+            </div>
+            <button type="submit" class="btn-secondary">Login</button>
+          </form>
+        </section>
+      </div>
+
+      <div id="profileContainer" class="hidden">
+        <div class="card">
+          <h2>User Profile</h2>
+          <p><strong>Name:</strong> <span id="userName"></span></p>
+          <p><strong>Email:</strong> <span id="userEmail"></span></p>
+          <button id="logoutBtn" class="btn-danger">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
