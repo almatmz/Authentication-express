@@ -14,13 +14,6 @@ async function apiRequest(endpoint, method = "GET", body) {
     body: body ? JSON.stringify(body) : null,
   });
 
-  const contentType = res.headers.get("content-type");
-
-  if (!contentType || !contentType.includes("application/json")) {
-    const text = await res.text();
-    throw new Error(text || "Server error");
-  }
-
   const data = await res.json();
 
   if (!res.ok) {
@@ -46,15 +39,6 @@ async function checkAuth() {
 
 regForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const password = regPass.value;
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-
-  if (!passwordRegex.test(password)) {
-    alert(
-      "Password is week. Needs 8+ chars, uppercase, lowercase, and a number.",
-    );
-    return;
-  }
   try {
     await apiRequest("/register", "POST", {
       name: regName.value,
